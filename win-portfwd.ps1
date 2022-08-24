@@ -85,11 +85,11 @@ do {
         "C"
         {
             $Lport = Read-Host -Prompt 'Enter the Listen Port'
-            $Laddress = Read-Host -Prompt 'Enter the Listen IP Address'
-            netsh interface portproxy delete v4tov4 listenport=$Lport listenaddress=$Laddress
-            netsh advfirewall firewall delete rule name="forward_port_rule_in" protocol=TCP dir=in localip=$Laddress localport=$Lport
-            Write-Host 'Forwarding from address ' + $Lhost ' with port ' + '$Lport' + ' has been removed'
-            Write-Host 'Incoming firewall rule from address ' + $Lhost ' with port ' + '$Lport' + ' removed as well!'
+            $Lhost = Read-Host -Prompt 'Enter the Listen IP Address'
+            netsh interface portproxy delete v4tov4 listenport=$Lport listenaddress=$Lhost
+            netsh advfirewall firewall delete rule name="forward_port_rule_in" protocol=TCP dir=in localip=$Lhost localport=$Lport
+            Write-Host 'Forwarding from address'$Lhost with port $Lport 'has been removed'
+            Write-Host 'Incoming firewall rule from IP address'$Lhost 'with port' $Lport 'removed as well!'
             netsh interface portproxy show all
         }
 
