@@ -71,7 +71,7 @@ do {
 			else {
 			netsh interface portproxy add v4tov4 listenaddress=$Lhost listenport=$Lport connectaddress=$Rhost connectport=$Rport
             netsh advfirewall firewall add rule name="forward_port_rule_in" protocol=TCP dir=in localip=$Lhost localport=$Lport action=allow
-            Write-Host 'Incoming firewall rule from address ' + $Lhost ' with port ' + '$Lport' + ' added as well!'
+            Write-Host 'Incoming firewall rule from address '$Lhost ' with port '$Lport ' added as well!'
             netsh interface portproxy show all
 
 				}
